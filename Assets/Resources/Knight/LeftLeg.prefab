@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 5095257947114410502}
   - component: {fileID: -3564892691475353462}
   - component: {fileID: 249410348090095516}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: LeftLeg
-  m_TagString: Untagged
+  m_TagString: Armour
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

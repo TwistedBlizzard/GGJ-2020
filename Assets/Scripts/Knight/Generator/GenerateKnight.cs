@@ -12,6 +12,9 @@ namespace IngloriousBlacksmiths
         [SerializeField]
         private RectTransform[] spots = null;
 
+        [SerializeField]
+        GameManager m_GameManager = null;
+
         private float ticker = 0;
 
         // Start is called before the first frame update
@@ -41,12 +44,16 @@ namespace IngloriousBlacksmiths
         {
             List<RectTransform> bodyParts = new List<RectTransform>();
 
-
-
             for (int i = 0; i < baseBodyParts.Length; ++i)
             {
                 RectTransform bodyPart = Instantiate(baseBodyParts[i], Vector3.zero, Quaternion.identity, spots[i]) as RectTransform;
                 bodyPart.anchoredPosition = Vector3.zero;
+
+                if (bodyPart.gameObject.TryGetComponent<Injuries>(out Injuries inj))
+                {
+                    inj.InitInjury(m_GameManager);
+                }
+
                 bodyParts.Add(bodyPart);
             }
             int health = Random.Range(0, 4);
