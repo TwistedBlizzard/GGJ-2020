@@ -78,6 +78,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_InteractionTag: Armour
+  m_StandardMaterial: {fileID: 2100000, guid: 90056b04bd0d2474fb5701f6c4686e8e, type: 2}
+  m_OutlineMaterial: {fileID: 2100000, guid: 10cf7e25b2d173743849739040beab05, type: 2}
 --- !u!50 &8243445193099284558
 Rigidbody2D:
   serializedVersion: 4

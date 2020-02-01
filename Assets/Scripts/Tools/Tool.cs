@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.Events;
+using UnityEngine.UI;
 
 namespace IngloriousBlacksmiths
 {
     [RequireComponent(typeof(RectTransform), typeof(BoxCollider2D))]
     public class Tool : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
     {
-
         [SerializeField] string m_InteractionTag = "Armour";
 
         protected Vector3 m_StartPosition = Vector3.zero;
@@ -20,6 +19,8 @@ namespace IngloriousBlacksmiths
 
         // on exit trigger fires on start up. Flag is used to make sure the exit behaviour only happens on a true trigger exit.
         bool previouslyOverlapping = false;
+
+        bool dragging = false;
 
         public string ToolName
         {
@@ -37,6 +38,8 @@ namespace IngloriousBlacksmiths
             {
                 m_Offset = new Vector2(m_Rect.anchoredPosition.x - eventData.position.x, m_Rect.anchoredPosition.y - eventData.position.y);
             }
+
+            dragging = true;
         }
 
         public void OnDrag(PointerEventData eventData)
@@ -61,6 +64,8 @@ namespace IngloriousBlacksmiths
             {
                 UseTool();
             }
+
+            dragging = false;
         }
 
         public virtual void InitTool()
@@ -82,26 +87,47 @@ namespace IngloriousBlacksmiths
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.tag == m_InteractionTag)
+            if (dragging)
             {
-                m_OverlappingObject = collision.gameObject;
+                if (collision.tag == m_InteractionTag)
+                {
+                    m_OverlappingObject = collision.gameObject;
 
-                previouslyOverlapping = true;
+                    previouslyOverlapping = true;
+
+                    OverlapHighlight(collision.gameObject, true);
+                }
             }
         }
 
         private void OnTriggerExit2D(Collider2D collision)
         {
-            if (previouslyOverlapping)
-            {
+            //if (previouslyOverlapping)
+            //{
                 m_OverlappingObject = null;
 
                 previouslyOverlapping = false;
+
+                OverlapHighlight(collision.gameObject, false);
+            //}
+        }
+
+        void OverlapHighlight(GameObject highlightObject, bool makeHighlighted)
+        {
+            if (highlightObject != null)
+            {
+                Outline outlineObj = highlightObject.GetComponentInChildren<Outline>();
+
+                if (outlineObj != null)
+                {
+                    outlineObj.enabled = makeHighlighted;
+                }
             }
         }
 
         protected virtual void UseTool()
         {
         }
+
     }
 }

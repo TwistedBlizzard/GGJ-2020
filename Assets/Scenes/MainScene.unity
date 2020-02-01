@@ -250,6 +250,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1913756728}
     m_Modifications:
+    - target: {fileID: 378995898953541243, guid: 23db590012ce33a4784693fa0c6168fc,
+        type: 3}
+      propertyPath: m_InteractionTag
+      value: Anvil
+      objectReference: {fileID: 0}
+    - target: {fileID: 378995898953541243, guid: 23db590012ce33a4784693fa0c6168fc,
+        type: 3}
+      propertyPath: m_StandardMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 90056b04bd0d2474fb5701f6c4686e8e, type: 2}
+    - target: {fileID: 378995898953541243, guid: 23db590012ce33a4784693fa0c6168fc,
+        type: 3}
+      propertyPath: m_OutlineMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 10cf7e25b2d173743849739040beab05, type: 2}
     - target: {fileID: 3649209067863351834, guid: 23db590012ce33a4784693fa0c6168fc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1224,6 +1239,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1913756728}
     m_Modifications:
+    - target: {fileID: 3179761717071073073, guid: a49c8d2e3b943624c8dc60a4166d752a,
+        type: 3}
+      propertyPath: m_InteractionTag
+      value: Knight
+      objectReference: {fileID: 0}
+    - target: {fileID: 3179761717071073073, guid: a49c8d2e3b943624c8dc60a4166d752a,
+        type: 3}
+      propertyPath: m_StandardMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 90056b04bd0d2474fb5701f6c4686e8e, type: 2}
+    - target: {fileID: 3179761717071073073, guid: a49c8d2e3b943624c8dc60a4166d752a,
+        type: 3}
+      propertyPath: m_OutlineMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 10cf7e25b2d173743849739040beab05, type: 2}
     - target: {fileID: 3487741657265890656, guid: a49c8d2e3b943624c8dc60a4166d752a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1365,6 +1395,7 @@ GameObject:
   - component: {fileID: 804772773}
   - component: {fileID: 804772775}
   - component: {fileID: 804772774}
+  - component: {fileID: 804772776}
   m_Layer: 5
   m_Name: LegsBucketImage
   m_TagString: Bucket
@@ -1427,6 +1458,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 804772772}
   m_CullTransparentMesh: 0
+--- !u!114 &804772776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 804772772}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 1, g: 0.30571634, b: 0, a: 0.5}
+  m_EffectDistance: {x: 5, y: 5}
+  m_UseGraphicAlpha: 1
 --- !u!1 &810518948
 GameObject:
   m_ObjectHideFlags: 0
@@ -1643,6 +1689,7 @@ GameObject:
   - component: {fileID: 982367919}
   - component: {fileID: 982367921}
   - component: {fileID: 982367920}
+  - component: {fileID: 982367922}
   m_Layer: 5
   m_Name: AnvilImage
   m_TagString: Untagged
@@ -1705,6 +1752,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 982367918}
   m_CullTransparentMesh: 0
+--- !u!114 &982367922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 982367918}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 1, g: 0.30571634, b: 0, a: 0.5}
+  m_EffectDistance: {x: 5, y: 5}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1096354757
 GameObject:
   m_ObjectHideFlags: 0
@@ -2011,6 +2073,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1913756728}
     m_Modifications:
+    - target: {fileID: 5036942204659824239, guid: 67269e9681ba54b4b87f4da03ce2ef9f,
+        type: 3}
+      propertyPath: m_InteractionTag
+      value: Bucket
+      objectReference: {fileID: 0}
+    - target: {fileID: 5036942204659824239, guid: 67269e9681ba54b4b87f4da03ce2ef9f,
+        type: 3}
+      propertyPath: m_StandardMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 90056b04bd0d2474fb5701f6c4686e8e, type: 2}
+    - target: {fileID: 5036942204659824239, guid: 67269e9681ba54b4b87f4da03ce2ef9f,
+        type: 3}
+      propertyPath: m_OutlineMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 10cf7e25b2d173743849739040beab05, type: 2}
     - target: {fileID: 6738731349321786344, guid: 67269e9681ba54b4b87f4da03ce2ef9f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2841,6 +2918,7 @@ GameObject:
   - component: {fileID: 1533413623}
   - component: {fileID: 1533413625}
   - component: {fileID: 1533413624}
+  - component: {fileID: 1533413626}
   m_Layer: 5
   m_Name: TorsoBucketImage
   m_TagString: Bucket
@@ -2903,6 +2981,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1533413622}
   m_CullTransparentMesh: 0
+--- !u!114 &1533413626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1533413622}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 1, g: 0.30571634, b: 0, a: 0.5}
+  m_EffectDistance: {x: 5, y: 5}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1627900651
 GameObject:
   m_ObjectHideFlags: 0
@@ -2914,6 +3007,7 @@ GameObject:
   - component: {fileID: 1627900652}
   - component: {fileID: 1627900654}
   - component: {fileID: 1627900653}
+  - component: {fileID: 1627900655}
   m_Layer: 5
   m_Name: ArmsBucketImage
   m_TagString: Bucket
@@ -2976,6 +3070,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1627900651}
   m_CullTransparentMesh: 0
+--- !u!114 &1627900655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1627900651}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 1, g: 0.30571634, b: 0, a: 0.5}
+  m_EffectDistance: {x: 5, y: 5}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1695905683
 GameObject:
   m_ObjectHideFlags: 0
@@ -3499,6 +3608,7 @@ GameObject:
   - component: {fileID: 1975069134}
   - component: {fileID: 1975069136}
   - component: {fileID: 1975069135}
+  - component: {fileID: 1975069137}
   m_Layer: 5
   m_Name: HelmetBucketImage
   m_TagString: Untagged
@@ -3561,6 +3671,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1975069133}
   m_CullTransparentMesh: 0
+--- !u!114 &1975069137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1975069133}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 1, g: 0.30571634, b: 0, a: 0.5}
+  m_EffectDistance: {x: 5, y: 5}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1982981368
 GameObject:
   m_ObjectHideFlags: 0
