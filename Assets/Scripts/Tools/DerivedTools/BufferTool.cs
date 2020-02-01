@@ -12,5 +12,12 @@ namespace IngloriousBlacksmiths
 
             base.InitTool();
         }
+
+        protected override void UseTool()
+        {
+            base.UseTool();
+
+
+        }
     } 
 }

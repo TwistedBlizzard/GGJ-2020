@@ -17,12 +17,16 @@ namespace IngloriousBlacksmiths
         protected BoxCollider2D m_Collider = null;
 
         protected string m_ToolName = null;
+
+        // on exit trigger fires on start up. Flag is used to make sure the exit behaviour only happens on a true trigger exit.
+        bool previouslyOverlapping = false;
+
         public string ToolName
         {
             get { return m_ToolName; }
         }
 
-        protected GameObject m_OverlappingArmour = null;
+        protected GameObject m_OverlappingObject = null;
 
         // this stops the tool image from snapping to the middle of the cursor mid drag.
         Vector2 m_Offset = Vector2.zero;
@@ -52,6 +56,11 @@ namespace IngloriousBlacksmiths
             }
 
             m_Offset = Vector2.zero;
+
+            if (m_OverlappingObject != null)
+            {
+                UseTool();
+            }
         }
 
         public virtual void InitTool()
@@ -75,17 +84,24 @@ namespace IngloriousBlacksmiths
         {
             if (collision.tag == m_InteractionTag)
             {
-                m_OverlappingArmour = collision.gameObject;
+                m_OverlappingObject = collision.gameObject;
+
+                previouslyOverlapping = true;
             }
         }
 
         private void OnTriggerExit2D(Collider2D collision)
         {
-            Debug.Log("Tool is no longer over armour.");
+            if (previouslyOverlapping)
+            {
+                m_OverlappingObject = null;
+
+                previouslyOverlapping = false;
+            }
         }
 
-        protected virtual void UseToolOnArmour()
+        protected virtual void UseTool()
         {
         }
-    } 
+    }
 }
