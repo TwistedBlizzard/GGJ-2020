@@ -3,23 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-[RequireComponent(typeof(TextMeshProUGUI))]
-public class OnScreenDebug : MonoBehaviour
+namespace IngloriousBlacksmiths
 {
-    TextMeshProUGUI debugText = null;
+    [RequireComponent(typeof(TextMeshProUGUI))]
+    public class OnScreenDebug : MonoBehaviour
+    {
+        TextMeshProUGUI debugText = null;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        if(!TryGetComponent<TextMeshProUGUI>(out debugText))
+        // Start is called before the first frame update
+        void Start()
         {
-            Debug.LogError("Failed to get debug text.");
+            if (!TryGetComponent<TextMeshProUGUI>(out debugText))
+            {
+                Debug.LogError("Failed to get debug text.");
+            }
         }
-    }
-    
-    public void PrintDebugMessage(string msg)
-    {
-        if (debugText != null)
-            debugText.text = msg;
+
+        public void PrintDebugMessage(string msg)
+        {
+            if (debugText != null)
+                debugText.text = msg;
+        }
     }
 }

@@ -4,81 +4,88 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Events;
 
-[RequireComponent(typeof(RectTransform), typeof(BoxCollider2D))]
-public class Tool : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
+namespace IngloriousBlacksmiths
 {
-
-    [SerializeField] string m_InteractionTag = "Armour";
-
-    protected Vector3 m_StartPosition = Vector3.zero;
-    protected RectTransform m_Rect = null;
-    protected BoxCollider2D m_Collider = null;
-    protected string m_ToolName = null;
-
-    protected GameObject m_OverlappingArmour = null;
-
-    // this stops the tool image from snapping to the middle of the cursor mid drag.
-    Vector2 m_Offset = Vector2.zero;
-
-    public void OnBeginDrag(PointerEventData eventData)
+    [RequireComponent(typeof(RectTransform), typeof(BoxCollider2D))]
+    public class Tool : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
     {
-        if (m_Rect != null && eventData != null)
-        {
-            m_Offset = new Vector2(m_Rect.anchoredPosition.x - eventData.position.x, m_Rect.anchoredPosition.y - eventData.position.y);
-        }
-    }
 
-    public void OnDrag(PointerEventData eventData)
-    {
-        // drag tool to follow cursor
-        if (m_Rect != null && eventData != null)
-        {
-            m_Rect.anchoredPosition = eventData.position + m_Offset;
-        }
-    }
+        [SerializeField] string m_InteractionTag = "Armour";
 
-    public void OnEndDrag(PointerEventData eventData)
-    {
-        if(m_Rect != null)
+        protected Vector3 m_StartPosition = Vector3.zero;
+        protected RectTransform m_Rect = null;
+        protected BoxCollider2D m_Collider = null;
+
+        protected string m_ToolName = null;
+        public string ToolName
         {
-            m_Rect.anchoredPosition = m_StartPosition;
+            get { return m_ToolName; }
         }
 
-        m_Offset = Vector2.zero;
-    }
+        protected GameObject m_OverlappingArmour = null;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        if (!TryGetComponent<RectTransform>(out m_Rect))
+        // this stops the tool image from snapping to the middle of the cursor mid drag.
+        Vector2 m_Offset = Vector2.zero;
+
+        public void OnBeginDrag(PointerEventData eventData)
         {
-            Debug.LogError($"Tool ({m_ToolName}) doesn't have a valid RectTransform.");
-        }
-        else 
-        {
-            m_StartPosition = m_Rect.anchoredPosition;
+            if (m_Rect != null && eventData != null)
+            {
+                m_Offset = new Vector2(m_Rect.anchoredPosition.x - eventData.position.x, m_Rect.anchoredPosition.y - eventData.position.y);
+            }
         }
 
-        if (!TryGetComponent<BoxCollider2D>(out m_Collider))
+        public void OnDrag(PointerEventData eventData)
         {
-            Debug.LogError($"Tool ({m_ToolName}) is missing a box collider!");
+            // drag tool to follow cursor
+            if (m_Rect != null && eventData != null)
+            {
+                m_Rect.anchoredPosition = eventData.position + m_Offset;
+            }
         }
-    }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(collision.tag == m_InteractionTag)
+        public void OnEndDrag(PointerEventData eventData)
         {
-            m_OverlappingArmour = collision.gameObject;
+            if (m_Rect != null)
+            {
+                m_Rect.anchoredPosition = m_StartPosition;
+            }
+
+            m_Offset = Vector2.zero;
         }
-    }
 
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        Debug.Log("Tool is no longer over armour.");
-    }
+        public virtual void InitTool()
+        {
+            if (!TryGetComponent<RectTransform>(out m_Rect))
+            {
+                Debug.LogError($"Tool ({m_ToolName}) doesn't have a valid RectTransform.");
+            }
+            else
+            {
+                m_StartPosition = m_Rect.anchoredPosition;
+            }
 
-    protected virtual void UseToolOnArmour()
-    {
-    }
+            if (!TryGetComponent<BoxCollider2D>(out m_Collider))
+            {
+                Debug.LogError($"Tool ({m_ToolName}) is missing a box collider!");
+            }
+        }
+
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.tag == m_InteractionTag)
+            {
+                m_OverlappingArmour = collision.gameObject;
+            }
+        }
+
+        private void OnTriggerExit2D(Collider2D collision)
+        {
+            Debug.Log("Tool is no longer over armour.");
+        }
+
+        protected virtual void UseToolOnArmour()
+        {
+        }
+    } 
 }
