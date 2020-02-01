@@ -518,6 +518,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_TimerText: {fileID: 395384727}
+  m_DeadKnightsText: {fileID: 1259677140}
+  m_SavedKnightsText: {fileID: 2102094237}
 --- !u!1 &388998826
 GameObject:
   m_ObjectHideFlags: 0
