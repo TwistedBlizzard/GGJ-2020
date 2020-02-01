@@ -11,7 +11,6 @@ namespace IngloriousBlacksmiths
         [SerializeField] TextMeshProUGUI m_TimerText = null;
         [SerializeField] TextMeshProUGUI m_DeadKnightsText = null;
         [SerializeField] TextMeshProUGUI m_SavedKnightsText = null;
-        [SerializeField] CloseDialog m_CloseDialog = null;
 
         public void SetTimerText(TimeSpan elapsed)
         {

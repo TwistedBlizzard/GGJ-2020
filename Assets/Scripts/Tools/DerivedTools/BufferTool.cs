@@ -17,7 +17,7 @@ namespace IngloriousBlacksmiths
         {
             base.UseTool();
 
-
+            m_GameManager.SoundManager.PlaySound(audioSource, "ToolUse_01");
         }
     } 
 }

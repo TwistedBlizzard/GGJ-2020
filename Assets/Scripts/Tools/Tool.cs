@@ -6,11 +6,11 @@ using UnityEngine.UI;
 
 namespace IngloriousBlacksmiths
 {
-    [RequireComponent(typeof(RectTransform), typeof(BoxCollider2D))]
+    [RequireComponent(typeof(RectTransform), typeof(BoxCollider2D), typeof(AudioSource))]
     public class Tool : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
     {
         [SerializeField] string m_InteractionTag = "Armour";
-        [SerializeField] GameManager m_GameManager = null;
+        [SerializeField] protected GameManager m_GameManager = null;
 
         protected Vector3 m_StartPosition = Vector3.zero;
         protected RectTransform m_Rect = null;
@@ -18,8 +18,7 @@ namespace IngloriousBlacksmiths
 
         protected string m_ToolName = null;
 
-        // on exit trigger fires on start up. Flag is used to make sure the exit behaviour only happens on a true trigger exit.
-        bool previouslyOverlapping = false;
+        protected AudioSource audioSource = null;
 
         bool dragging = false;
 
@@ -93,6 +92,11 @@ namespace IngloriousBlacksmiths
             {
                 Debug.LogError($"Tool ({m_ToolName}) is missing a box collider!");
             }
+
+            if(!TryGetComponent<AudioSource>(out audioSource))
+            {
+                Debug.LogError($"Tool ({m_ToolName}) is missing an audio source!");
+            }
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
@@ -104,9 +108,6 @@ namespace IngloriousBlacksmiths
                     if (collision.tag == m_InteractionTag)
                     {
                         m_OverlappingObject = collision.gameObject;
-
-                        previouslyOverlapping = true;
-
                         OverlapHighlight(collision.gameObject, true);
                     }
                 } 
@@ -120,9 +121,6 @@ namespace IngloriousBlacksmiths
                 //if (previouslyOverlapping)
                 //{
                 m_OverlappingObject = null;
-
-                previouslyOverlapping = false;
-
                 OverlapHighlight(collision.gameObject, false);
                 //} 
             }

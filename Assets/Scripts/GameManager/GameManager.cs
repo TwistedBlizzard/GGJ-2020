@@ -9,7 +9,25 @@ namespace IngloriousBlacksmiths
     {
         [SerializeField] UIManager m_UIManager = null;
         [SerializeField] InputManager m_InputManager = null;
+        [SerializeField] SoundManager m_SoundManager = null;
+        [SerializeField] AudioSource tempSource = null;
  
+        public UIManager UIManager
+        {
+            get { return m_UIManager; }
+        }
+
+        public InputManager InputManager
+        {
+            get { return m_InputManager; }
+        }
+
+        public SoundManager SoundManager
+        {
+            get { return m_SoundManager; }
+        }
+
+
         // game timer stuff
         const int TOTAL_GAME_SECS = 300;
         IEnumerator BeginCountdownCO = null;
@@ -68,6 +86,8 @@ namespace IngloriousBlacksmiths
                 BeginCountdownCO = BeginCountdown();
                 StartCoroutine(BeginCountdownCO);
             }
+
+            m_SoundManager?.PlaySound(tempSource, "Ambience_01", true);
         }
 
         void SaveKnight()
