@@ -10,6 +10,7 @@ namespace IngloriousBlacksmiths
     public class Tool : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
     {
         [SerializeField] string m_InteractionTag = "Armour";
+        [SerializeField] GameManager m_GameManager = null;
 
         protected Vector3 m_StartPosition = Vector3.zero;
         protected RectTransform m_Rect = null;
@@ -34,38 +35,47 @@ namespace IngloriousBlacksmiths
 
         public void OnBeginDrag(PointerEventData eventData)
         {
-            if (m_Rect != null && eventData != null)
+            if (!m_GameManager.IsPaused)
             {
-                m_Offset = new Vector2(m_Rect.anchoredPosition.x - eventData.position.x, m_Rect.anchoredPosition.y - eventData.position.y);
-            }
+                if (m_Rect != null && eventData != null)
+                {
+                    m_Offset = new Vector2(m_Rect.anchoredPosition.x - eventData.position.x, m_Rect.anchoredPosition.y - eventData.position.y);
+                }
 
-            dragging = true;
+                dragging = true;
+            }
         }
 
         public void OnDrag(PointerEventData eventData)
         {
-            // drag tool to follow cursor
-            if (m_Rect != null && eventData != null)
+            if (!m_GameManager.IsPaused)
             {
-                m_Rect.anchoredPosition = eventData.position + m_Offset;
+                // drag tool to follow cursor
+                if (m_Rect != null && eventData != null)
+                {
+                    m_Rect.anchoredPosition = eventData.position + m_Offset;
+                } 
             }
         }
 
         public void OnEndDrag(PointerEventData eventData)
         {
-            if (m_Rect != null)
+            if (!m_GameManager.IsPaused)
             {
-                m_Rect.anchoredPosition = m_StartPosition;
+                if (m_Rect != null)
+                {
+                    m_Rect.anchoredPosition = m_StartPosition;
+                }
+
+                m_Offset = Vector2.zero;
+
+                if (m_OverlappingObject != null)
+                {
+                    UseTool();
+                }
+
+                dragging = false; 
             }
-
-            m_Offset = Vector2.zero;
-
-            if (m_OverlappingObject != null)
-            {
-                UseTool();
-            }
-
-            dragging = false;
         }
 
         public virtual void InitTool()
@@ -87,29 +97,35 @@ namespace IngloriousBlacksmiths
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (dragging)
+            if (!m_GameManager.IsPaused)
             {
-                if (collision.tag == m_InteractionTag)
+                if (dragging)
                 {
-                    m_OverlappingObject = collision.gameObject;
+                    if (collision.tag == m_InteractionTag)
+                    {
+                        m_OverlappingObject = collision.gameObject;
 
-                    previouslyOverlapping = true;
+                        previouslyOverlapping = true;
 
-                    OverlapHighlight(collision.gameObject, true);
-                }
+                        OverlapHighlight(collision.gameObject, true);
+                    }
+                } 
             }
         }
 
         private void OnTriggerExit2D(Collider2D collision)
         {
-            //if (previouslyOverlapping)
-            //{
+            if (!m_GameManager.IsPaused)
+            {
+                //if (previouslyOverlapping)
+                //{
                 m_OverlappingObject = null;
 
                 previouslyOverlapping = false;
 
                 OverlapHighlight(collision.gameObject, false);
-            //}
+                //} 
+            }
         }
 
         void OverlapHighlight(GameObject highlightObject, bool makeHighlighted)

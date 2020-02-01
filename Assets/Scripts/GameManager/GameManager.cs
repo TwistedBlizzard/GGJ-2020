@@ -8,6 +8,7 @@ namespace IngloriousBlacksmiths
     public class GameManager : MonoBehaviour
     {
         [SerializeField] UIManager m_UIManager = null;
+        [SerializeField] InputManager m_InputManager = null;
  
         // game timer stuff
         const int TOTAL_GAME_SECS = 300;
@@ -16,6 +17,12 @@ namespace IngloriousBlacksmiths
         //knight (score) counter
         int m_SavedKnights = 0;
         int m_DeadKnights = 0;
+
+        bool isPaused = false;
+        public bool IsPaused
+        {
+            get { return isPaused; }
+        }
 
         public int SavedKnightCount
         {
@@ -32,11 +39,16 @@ namespace IngloriousBlacksmiths
             BeginGame();
         }
 
+        private void Update()
+        {
+            m_InputManager?.ListenForPlayerInputs();
+        }
+
+        int seconds = TOTAL_GAME_SECS;
+
         // countdown loop
         IEnumerator BeginCountdown()
         {
-            int seconds = TOTAL_GAME_SECS;
-
             while(seconds != 0)
             {
                 yield return new WaitForSeconds(1f);
@@ -70,6 +82,28 @@ namespace IngloriousBlacksmiths
             ++m_DeadKnights;
 
             m_UIManager?.SetDeadKnightsText(m_SavedKnights);
+        }
+
+        public void PauseGame(bool makePaused)
+        {
+            if(makePaused)
+            {
+                if (BeginCountdownCO != null)
+                { 
+                    StopCoroutine(BeginCountdownCO);
+                    BeginCountdownCO = null;
+                }
+            }
+            else
+            {
+                if (BeginCountdownCO == null)
+                {
+                    BeginCountdownCO = BeginCountdown();
+                    StartCoroutine(BeginCountdownCO);
+                }
+            }
+
+            isPaused = makePaused;
         }
 
         void EndGame()
