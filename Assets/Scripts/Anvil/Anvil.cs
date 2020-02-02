@@ -42,11 +42,15 @@ namespace IngloriousBlacksmiths
             m_StoredArmour = storedArmour;
 
             m_Outline.enabled = false;
+
+            m_GameManager.SoundManager.PlaySound(m_Source, "ArmorOn_01");
         }
 
         public void RemoveArmour()
         {
             m_StoredArmour = null;
+
+            m_GameManager.SoundManager.PlaySound(m_Source, "ArmorOff_01");
         }
     }
 
