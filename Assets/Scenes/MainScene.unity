@@ -1182,6 +1182,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_GameManager: {fileID: 1982981370}
+  m_ArmourRestSpot: {fileID: 693011679}
 --- !u!82 &417272209
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5588,6 +5589,9 @@ MonoBehaviour:
   m_UIManager: {fileID: 301216821}
   m_InputManager: {fileID: 135802151}
   m_SoundManager: {fileID: 307579011}
+  m_ToolsManager: {fileID: 1913756730}
+  m_Anvil: {fileID: 417272208}
+  m_Forge: {fileID: 1193299566}
 --- !u!1 &2050691362
 GameObject:
   m_ObjectHideFlags: 0

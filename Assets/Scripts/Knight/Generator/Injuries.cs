@@ -21,7 +21,7 @@ namespace IngloriousBlacksmiths
 
         Vector2 m_Offset = Vector2.zero;
         Vector3 m_StartPosition = Vector3.zero;
-        GameObject m_OverlappingObject = null;
+        GameObject m_AnvilOverlapObj = null;
 
 
         bool dragging = false;
@@ -136,17 +136,22 @@ namespace IngloriousBlacksmiths
         {
             if (!m_GameManager.IsPaused)
             {
-                if (m_Rect != null)
+                if (m_AnvilOverlapObj != null)
                 {
-                    m_Rect.anchoredPosition = m_StartPosition;
+                    DropArmourOnAnvil();
+                }
+                else
+                {
+                    if (m_Rect != null)
+                    {
+                        m_Rect.anchoredPosition = m_StartPosition;
+                    }
+
+                    if (m_GameManager.Anvil.StoredArmour != null)
+                        m_GameManager.Anvil.RemoveArmour();
                 }
 
                 m_Offset = Vector2.zero;
-
-                if (m_OverlappingObject != null)
-                {
-                    // do thing
-                }
 
                 dragging = false;
             }
@@ -158,9 +163,10 @@ namespace IngloriousBlacksmiths
             {
                 if (dragging)
                 {
+                    // only trigger enter on anvil objects.
                     if (collision.tag == "Anvil")
                     {
-                        m_OverlappingObject = collision.gameObject;
+                        m_AnvilOverlapObj = collision.gameObject;
                         OverlapHighlight(collision.gameObject, true);
                     }
                 }
@@ -171,11 +177,13 @@ namespace IngloriousBlacksmiths
         {
             if (!m_GameManager.IsPaused)
             {
-                //if (previouslyOverlapping)
-                //{
-                m_OverlappingObject = null;
-                OverlapHighlight(collision.gameObject, false);
-                //} 
+                // Only trigger exit on anvil object if we have one.
+                if (collision.gameObject == m_AnvilOverlapObj)
+                {
+                    m_AnvilOverlapObj = null;
+
+                    OverlapHighlight(collision.gameObject, false);
+                }
             }
         }
 
@@ -188,6 +196,25 @@ namespace IngloriousBlacksmiths
                 if (outlineObj != null)
                 {
                     outlineObj.enabled = makeHighlighted;
+                }
+            }
+        }
+
+        void DropArmourOnAnvil()
+        {
+            if(m_AnvilOverlapObj != null)
+            {
+                if(m_AnvilOverlapObj.TryGetComponent<Anvil>(out Anvil anvil))
+                {
+                    if (m_Rect != null)
+                    {
+                        m_Rect.position = anvil.ArmourRestSpot.position;
+                        anvil.StoreArmour(this);
+                    }
+                }
+                else
+                {
+                    Debug.LogError($"Cannot find Anvil script on overlapped object ({m_AnvilOverlapObj.name})");
                 }
             }
         }

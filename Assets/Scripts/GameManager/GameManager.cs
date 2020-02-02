@@ -10,6 +10,10 @@ namespace IngloriousBlacksmiths
         [SerializeField] UIManager m_UIManager = null;
         [SerializeField] InputManager m_InputManager = null;
         [SerializeField] SoundManager m_SoundManager = null;
+        [SerializeField] ToolsManager m_ToolsManager = null;
+        [SerializeField] Anvil m_Anvil = null;
+        [SerializeField] Forge m_Forge = null;
+        
  
         public UIManager UIManager
         {
@@ -24,6 +28,21 @@ namespace IngloriousBlacksmiths
         public SoundManager SoundManager
         {
             get { return m_SoundManager; }
+        }
+
+        public ToolsManager ToolsManager
+        {
+            get { return m_ToolsManager; }
+        }
+
+        public Anvil Anvil
+        {
+            get { return m_Anvil; }
+        }
+
+        public Forge Forge
+        {
+            get { return m_Forge; }
         }
 
 

@@ -9,6 +9,17 @@ namespace IngloriousBlacksmiths
     {
         [SerializeField] GameManager m_GameManager = null;
         AudioSource m_Source = null;
+        [SerializeField] RectTransform m_ArmourRestSpot = null;
+        Injuries m_StoredArmour = null;
+        public RectTransform ArmourRestSpot
+        {
+            get { return m_ArmourRestSpot; }
+        }
+
+        public Injuries StoredArmour
+        {
+            get { return m_StoredArmour; }
+        }
 
         private void Awake()
         {
@@ -18,9 +29,14 @@ namespace IngloriousBlacksmiths
             }
         }
 
-        public void UseAnvil(Tool toolUsed)
+        public void StoreArmour(Injuries storedArmour)
         {
+            m_StoredArmour = storedArmour;
+        }
 
+        public void RemoveArmour()
+        {
+            m_StoredArmour = null;
         }
     }
 
