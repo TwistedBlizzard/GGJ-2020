@@ -67,7 +67,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 5fd1659e52b0f464ebb82de871d72fc0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6cc9137ac530545e68692fa92b2739bd, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -89,10 +89,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3ff22be8cbe5465abb3455e64a4d9b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  foreignObject: {fileID: 0}
-  brokenArmour: {fileID: 0}
-  both: {fileID: 0}
-  fixedArmour: {fileID: 0}
+  foreignObject: {fileID: 21300000, guid: 6cc9137ac530545e68692fa92b2739bd, type: 3}
+  brokenArmour: {fileID: 21300000, guid: 6cc9137ac530545e68692fa92b2739bd, type: 3}
+  both: {fileID: 21300000, guid: 6cc9137ac530545e68692fa92b2739bd, type: 3}
+  fixedArmour: {fileID: 21300000, guid: 6cc9137ac530545e68692fa92b2739bd, type: 3}
 --- !u!61 &1316876960099223077
 BoxCollider2D:
   m_ObjectHideFlags: 0
