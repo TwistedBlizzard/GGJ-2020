@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace IngloriousBlacksmiths
 {
-    [RequireComponent(typeof(RectTransform), typeof(BoxCollider2D), typeof(AudioSource))]
+    [RequireComponent(typeof(RectTransform), typeof(BoxCollider2D))]
     public class Tool : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
     {
         [SerializeField] string m_InteractionTag = "Armour";
@@ -17,8 +17,6 @@ namespace IngloriousBlacksmiths
         protected BoxCollider2D m_Collider = null;
 
         protected string m_ToolName = null;
-
-        protected AudioSource audioSource = null;
 
         bool dragging = false;
 
@@ -91,11 +89,6 @@ namespace IngloriousBlacksmiths
             if (!TryGetComponent<BoxCollider2D>(out m_Collider))
             {
                 Debug.LogError($"Tool ({m_ToolName}) is missing a box collider!");
-            }
-
-            if(!TryGetComponent<AudioSource>(out audioSource))
-            {
-                Debug.LogError($"Tool ({m_ToolName}) is missing an audio source!");
             }
         }
 

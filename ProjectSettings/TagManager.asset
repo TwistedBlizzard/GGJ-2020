@@ -8,6 +8,7 @@ TagManager:
   - Armour
   - Bucket
   - Anvil
+  - Forge
   layers:
   - Default
   - TransparentFX

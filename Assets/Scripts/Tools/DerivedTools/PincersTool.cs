@@ -16,8 +16,6 @@ namespace IngloriousBlacksmiths
         protected override void UseTool()
         {
             base.UseTool();
-
-            m_GameManager.SoundManager.PlaySound(audioSource, "ToolUse_01");
         }
     } 
 }

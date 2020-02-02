@@ -10,7 +10,6 @@ namespace IngloriousBlacksmiths
         [SerializeField] UIManager m_UIManager = null;
         [SerializeField] InputManager m_InputManager = null;
         [SerializeField] SoundManager m_SoundManager = null;
-        [SerializeField] AudioSource tempSource = null;
  
         public UIManager UIManager
         {
@@ -86,8 +85,6 @@ namespace IngloriousBlacksmiths
                 BeginCountdownCO = BeginCountdown();
                 StartCoroutine(BeginCountdownCO);
             }
-
-            m_SoundManager?.PlaySound(tempSource, "Ambience_01", true);
         }
 
         void SaveKnight()
@@ -113,6 +110,8 @@ namespace IngloriousBlacksmiths
                     StopCoroutine(BeginCountdownCO);
                     BeginCountdownCO = null;
                 }
+
+                Time.timeScale = 0;
             }
             else
             {
@@ -121,6 +120,8 @@ namespace IngloriousBlacksmiths
                     BeginCountdownCO = BeginCountdown();
                     StartCoroutine(BeginCountdownCO);
                 }
+
+                Time.timeScale = 1;
             }
 
             isPaused = makePaused;
