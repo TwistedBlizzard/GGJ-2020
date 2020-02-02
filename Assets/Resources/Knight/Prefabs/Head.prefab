@@ -31,7 +31,7 @@ RectTransform:
   m_GameObject: {fileID: 450314429792694797}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.9276, y: 2.1331265, z: 1.264}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -67,7 +67,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6cc9137ac530545e68692fa92b2739bd, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 36257a75f7e284e42860248a22579556, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -89,10 +89,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3ff22be8cbe5465abb3455e64a4d9b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  foreignObject: {fileID: 21300000, guid: 6cc9137ac530545e68692fa92b2739bd, type: 3}
-  brokenArmour: {fileID: 21300000, guid: 6cc9137ac530545e68692fa92b2739bd, type: 3}
-  both: {fileID: 21300000, guid: 6cc9137ac530545e68692fa92b2739bd, type: 3}
-  fixedArmour: {fileID: 21300000, guid: 6cc9137ac530545e68692fa92b2739bd, type: 3}
+  foreignObject: {fileID: 21300000, guid: ec304cde494564f6181c8bcaf6627329, type: 3}
+  brokenArmour: {fileID: 21300000, guid: 9989ea9c8753e466bb582836c017c853, type: 3}
+  both: {fileID: 21300000, guid: ec304cde494564f6181c8bcaf6627329, type: 3}
+  fixedArmour: {fileID: 21300000, guid: 36257a75f7e284e42860248a22579556, type: 3}
 --- !u!61 &1316876960099223077
 BoxCollider2D:
   m_ObjectHideFlags: 0
