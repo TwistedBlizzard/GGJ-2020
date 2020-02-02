@@ -357,7 +357,7 @@ PrefabInstance:
     - target: {fileID: 378995898953541243, guid: 23db590012ce33a4784693fa0c6168fc,
         type: 3}
       propertyPath: m_InteractionTag
-      value: Anvil
+      value: Armour
       objectReference: {fileID: 0}
     - target: {fileID: 378995898953541243, guid: 23db590012ce33a4784693fa0c6168fc,
         type: 3}
@@ -1183,6 +1183,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_GameManager: {fileID: 1982981370}
   m_ArmourRestSpot: {fileID: 693011679}
+  m_Outline: {fileID: 982367922}
 --- !u!82 &417272209
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1938,7 +1939,7 @@ PrefabInstance:
     - target: {fileID: 3179761717071073073, guid: a49c8d2e3b943624c8dc60a4166d752a,
         type: 3}
       propertyPath: m_InteractionTag
-      value: Knight
+      value: Armour
       objectReference: {fileID: 0}
     - target: {fileID: 3179761717071073073, guid: a49c8d2e3b943624c8dc60a4166d752a,
         type: 3}
@@ -3314,7 +3315,7 @@ PrefabInstance:
     - target: {fileID: 5036942204659824239, guid: 67269e9681ba54b4b87f4da03ce2ef9f,
         type: 3}
       propertyPath: m_InteractionTag
-      value: Bucket
+      value: Armour
       objectReference: {fileID: 0}
     - target: {fileID: 5036942204659824239, guid: 67269e9681ba54b4b87f4da03ce2ef9f,
         type: 3}

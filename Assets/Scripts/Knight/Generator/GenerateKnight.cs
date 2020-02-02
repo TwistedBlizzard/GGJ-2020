@@ -49,6 +49,8 @@ namespace IngloriousBlacksmiths
                 RectTransform bodyPart = Instantiate(baseBodyParts[i], Vector3.zero, Quaternion.identity, spots[i]) as RectTransform;
                 bodyPart.anchoredPosition = Vector3.zero;
 
+                bodyPart.tag = "Armour";
+
                 if (bodyPart.gameObject.TryGetComponent<Injuries>(out Injuries inj))
                 {
                     inj.InitInjury(m_GameManager);

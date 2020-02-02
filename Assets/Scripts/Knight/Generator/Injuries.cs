@@ -23,7 +23,6 @@ namespace IngloriousBlacksmiths
         Vector3 m_StartPosition = Vector3.zero;
         GameObject m_AnvilOverlapObj = null;
 
-
         bool dragging = false;
 
         bool hasForeignObject;

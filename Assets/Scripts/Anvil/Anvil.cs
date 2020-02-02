@@ -1,16 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace IngloriousBlacksmiths
 {
-    [RequireComponent(typeof(AudioSource))]
+    [RequireComponent(typeof(AudioSource), typeof(Outline))]
     public class Anvil : MonoBehaviour
     {
         [SerializeField] GameManager m_GameManager = null;
         AudioSource m_Source = null;
         [SerializeField] RectTransform m_ArmourRestSpot = null;
         Injuries m_StoredArmour = null;
+        [SerializeField] Outline m_Outline = null;
+
         public RectTransform ArmourRestSpot
         {
             get { return m_ArmourRestSpot; }
@@ -19,6 +22,11 @@ namespace IngloriousBlacksmiths
         public Injuries StoredArmour
         {
             get { return m_StoredArmour; }
+        }
+
+        public AudioSource AudioSource
+        {
+            get { return m_Source; }
         }
 
         private void Awake()
@@ -32,6 +40,8 @@ namespace IngloriousBlacksmiths
         public void StoreArmour(Injuries storedArmour)
         {
             m_StoredArmour = storedArmour;
+
+            m_Outline.enabled = false;
         }
 
         public void RemoveArmour()

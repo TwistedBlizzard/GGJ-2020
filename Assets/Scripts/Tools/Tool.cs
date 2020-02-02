@@ -68,7 +68,10 @@ namespace IngloriousBlacksmiths
 
                 if (m_OverlappingObject != null)
                 {
-                    UseTool();
+                    if(m_OverlappingObject.TryGetComponent<Injuries>(out Injuries armour))
+                    {
+                        UseTool(armour);
+                    }
                 }
 
                 dragging = false; 
@@ -100,8 +103,11 @@ namespace IngloriousBlacksmiths
                 {
                     if (collision.tag == m_InteractionTag)
                     {
-                        m_OverlappingObject = collision.gameObject;
-                        OverlapHighlight(collision.gameObject, true);
+                        if (m_GameManager.Anvil.StoredArmour != null && collision.gameObject == m_GameManager.Anvil.StoredArmour.gameObject)
+                        {
+                            m_OverlappingObject = collision.gameObject;
+                            OverlapHighlight(collision.gameObject, true);
+                        }
                     }
                 } 
             }
@@ -132,7 +138,7 @@ namespace IngloriousBlacksmiths
             }
         }
 
-        protected virtual void UseTool()
+        protected virtual void UseTool(Injuries armour)
         {
         }
 
